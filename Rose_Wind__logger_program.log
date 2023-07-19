@@ -1,0 +1,124 @@
+2023-07-19 14:00:46,863 - INFO - logger initialized
+2023-07-19 14:00:46,864 - INFO - message has sent
+2023-07-19 14:00:46,914 - INFO - get batch {buffer}
+2023-07-19 14:00:47,215 - INFO - get batch {buffer}
+2023-07-19 14:00:47,215 - INFO - batch is ready  {buffer}
+2023-07-19 14:00:47,215 - INFO - data is unpacked
+2023-07-19 14:00:47,216 - INFO - file created
+2023-07-19 14:00:47,218 - INFO - message has sent
+2023-07-19 14:00:47,269 - INFO - get batch {buffer}
+2023-07-19 14:00:47,570 - INFO - get batch {buffer}
+2023-07-19 14:00:47,570 - INFO - batch is ready  {buffer}
+2023-07-19 14:00:47,570 - INFO - data is unpacked
+2023-07-19 14:00:47,572 - INFO - file created
+2023-07-19 14:00:47,573 - INFO - message has sent
+2023-07-19 14:00:47,616 - INFO - get batch {buffer}
+2023-07-19 14:00:47,917 - INFO - get batch {buffer}
+2023-07-19 14:00:47,917 - INFO - batch is ready  {buffer}
+2023-07-19 14:00:47,917 - INFO - data is unpacked
+2023-07-19 14:00:47,919 - INFO - file created
+2023-07-19 14:00:47,920 - INFO - message has sent
+2023-07-19 14:00:47,972 - INFO - get batch {buffer}
+2023-07-19 14:00:48,273 - INFO - get batch {buffer}
+2023-07-19 14:00:48,273 - INFO - batch is ready  {buffer}
+2023-07-19 14:00:48,273 - INFO - data is unpacked
+2023-07-19 14:00:48,274 - INFO - file created
+2023-07-19 14:00:48,276 - INFO - message has sent
+2023-07-19 14:00:48,321 - INFO - get batch {buffer}
+2023-07-19 14:00:48,621 - INFO - get batch {buffer}
+2023-07-19 14:00:48,621 - INFO - batch is ready  {buffer}
+2023-07-19 14:00:48,621 - INFO - data is unpacked
+2023-07-19 14:00:48,622 - INFO - file created
+2023-07-19 14:00:48,624 - INFO - message has sent
+2023-07-19 14:00:48,665 - INFO - get batch {buffer}
+2023-07-19 14:00:48,967 - INFO - get batch {buffer}
+2023-07-19 14:00:48,967 - INFO - batch is ready  {buffer}
+2023-07-19 14:00:48,967 - INFO - data is unpacked
+2023-07-19 14:00:48,968 - INFO - file created
+2023-07-19 14:00:48,970 - INFO - message has sent
+2023-07-19 14:00:49,010 - INFO - get batch {buffer}
+2023-07-19 14:00:49,311 - INFO - get batch {buffer}
+2023-07-19 14:00:49,311 - INFO - batch is ready  {buffer}
+2023-07-19 14:00:49,311 - INFO - data is unpacked
+2023-07-19 14:00:49,312 - INFO - file created
+2023-07-19 14:00:49,313 - INFO - message has sent
+2023-07-19 14:00:49,375 - INFO - get batch {buffer}
+2023-07-19 14:00:49,676 - INFO - get batch {buffer}
+2023-07-19 14:00:49,676 - INFO - batch is ready  {buffer}
+2023-07-19 14:00:49,676 - INFO - data is unpacked
+2023-07-19 14:00:49,677 - INFO - file created
+2023-07-19 14:00:49,679 - INFO - message has sent
+2023-07-19 14:00:49,745 - INFO - get batch {buffer}
+2023-07-19 14:00:50,047 - INFO - get batch {buffer}
+2023-07-19 14:00:50,047 - INFO - batch is ready  {buffer}
+2023-07-19 14:00:50,047 - INFO - data is unpacked
+2023-07-19 14:00:50,048 - INFO - file created
+2023-07-19 14:00:50,050 - INFO - message has sent
+2023-07-19 14:00:50,091 - INFO - get batch {buffer}
+2023-07-19 14:00:50,391 - INFO - get batch {buffer}
+2023-07-19 14:00:50,391 - INFO - batch is ready  {buffer}
+2023-07-19 14:00:50,391 - INFO - data is unpacked
+2023-07-19 14:00:50,392 - INFO - file created
+2023-07-19 14:02:16,128 - INFO - logger initialized
+2023-07-19 14:02:16,129 - INFO - message has sent
+2023-07-19 14:02:36,881 - INFO - logger initialized
+2023-07-19 14:02:36,881 - INFO - message has sent
+2023-07-19 14:02:36,922 - INFO - get batch {buffer}
+2023-07-19 14:02:37,223 - INFO - get batch {buffer}
+2023-07-19 14:02:37,223 - INFO - batch is ready  {buffer}
+2023-07-19 14:02:37,223 - INFO - data is unpacked
+2023-07-19 14:02:37,225 - INFO - file created
+2023-07-19 14:02:37,227 - INFO - message has sent
+2023-07-19 14:02:37,273 - INFO - get batch {buffer}
+2023-07-19 14:02:37,574 - INFO - get batch {buffer}
+2023-07-19 14:02:37,574 - INFO - batch is ready  {buffer}
+2023-07-19 14:02:37,574 - INFO - data is unpacked
+2023-07-19 14:02:37,575 - INFO - file created
+2023-07-19 14:02:37,577 - INFO - message has sent
+2023-07-19 14:02:37,858 - INFO - get batch {buffer}
+2023-07-19 14:02:38,159 - INFO - get batch {buffer}
+2023-07-19 14:02:38,159 - INFO - batch is ready  {buffer}
+2023-07-19 14:02:38,159 - INFO - data is unpacked
+2023-07-19 14:02:38,160 - INFO - file created
+2023-07-19 14:02:38,162 - INFO - message has sent
+2023-07-19 14:02:38,204 - INFO - get batch {buffer}
+2023-07-19 14:02:38,505 - INFO - get batch {buffer}
+2023-07-19 14:02:38,505 - INFO - batch is ready  {buffer}
+2023-07-19 14:02:38,505 - INFO - data is unpacked
+2023-07-19 14:02:38,506 - INFO - file created
+2023-07-19 14:02:38,508 - INFO - message has sent
+2023-07-19 14:02:38,551 - INFO - get batch {buffer}
+2023-07-19 14:02:38,852 - INFO - get batch {buffer}
+2023-07-19 14:02:38,852 - INFO - batch is ready  {buffer}
+2023-07-19 14:02:38,852 - INFO - data is unpacked
+2023-07-19 14:02:38,855 - INFO - file created
+2023-07-19 14:02:38,856 - INFO - message has sent
+2023-07-19 14:02:38,896 - INFO - get batch {buffer}
+2023-07-19 14:02:39,197 - INFO - get batch {buffer}
+2023-07-19 14:02:39,197 - INFO - batch is ready  {buffer}
+2023-07-19 14:02:39,197 - INFO - data is unpacked
+2023-07-19 14:02:39,199 - INFO - file created
+2023-07-19 14:02:39,200 - INFO - message has sent
+2023-07-19 14:02:39,240 - INFO - get batch {buffer}
+2023-07-19 14:02:39,542 - INFO - get batch {buffer}
+2023-07-19 14:02:39,542 - INFO - batch is ready  {buffer}
+2023-07-19 14:02:39,542 - INFO - data is unpacked
+2023-07-19 14:02:39,543 - INFO - file created
+2023-07-19 14:02:39,545 - INFO - message has sent
+2023-07-19 14:02:39,584 - INFO - get batch {buffer}
+2023-07-19 14:02:39,885 - INFO - get batch {buffer}
+2023-07-19 14:02:39,886 - INFO - batch is ready  {buffer}
+2023-07-19 14:02:39,886 - INFO - data is unpacked
+2023-07-19 14:02:39,888 - INFO - file created
+2023-07-19 14:02:39,889 - INFO - message has sent
+2023-07-19 14:02:39,931 - INFO - get batch {buffer}
+2023-07-19 14:02:40,232 - INFO - get batch {buffer}
+2023-07-19 14:02:40,232 - INFO - batch is ready  {buffer}
+2023-07-19 14:02:40,232 - INFO - data is unpacked
+2023-07-19 14:02:40,236 - INFO - file created
+2023-07-19 14:02:40,240 - INFO - message has sent
+2023-07-19 14:02:40,285 - INFO - get batch {buffer}
+2023-07-19 14:02:40,586 - INFO - get batch {buffer}
+2023-07-19 14:02:40,586 - INFO - batch is ready  {buffer}
+2023-07-19 14:02:40,586 - INFO - data is unpacked
+2023-07-19 14:02:40,587 - INFO - file created
