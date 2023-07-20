@@ -8,7 +8,7 @@ import re
 import numpy as np
 
 # Логирование работы программы логирования ^_^
-logging.basicConfig(filename="Rose_Wind__logger_program.log", level=logging.DEBUG,
+logging.basicConfig(filename="Rose_Wind__logger_program3.log", level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s') 
 
 class Wind_Rose_logger:
