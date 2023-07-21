@@ -23,7 +23,7 @@ except:
 
 
 # Логирование работы программы логирования ^_^
-logging.basicConfig(filename="Rose_Wind__logger_program.log", level=logging.DEBUG,
+logging.basicConfig(filename="Rose_Wind__logger_program_3.log", level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s') 
 
 class Wind_Rose_logger:
@@ -68,8 +68,8 @@ class Wind_Rose_logger:
         - string (str): строка данных, которая будет записана в файл.
         - name_addition (str): приставка к имени файла для тестов и отладки.
         """
-        logger_path = os.path.dirname(os.path.realpath(__file__)) + '/'
-        time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S:%f')
+        logger_path = os.path.dirname(os.path.realpath(__file__)) + '/logs/'
+        time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S:')
         date_now = time_now.split()[0]
         writepath = logger_path + date_now  + name_addition + '.csv'
 
@@ -142,7 +142,7 @@ class Wind_Rose_logger:
         """
         buffer = b''
         message = b'\x01\x03\x00\x00\x00\x07\x04\x08'
-        pattern = re.compile(rb'\x01\x03\x0e') # Паттерн для определения начала пакета
+        pattern = b'\x01\x03\x0e' # Паттерн для определения начала пакета
         self.client.send(message)
         logging.info('message has sent')
 
@@ -151,7 +151,8 @@ class Wind_Rose_logger:
             logging.info(f'get batch {buffer}')
             buffer += input_data
 
-            if re.match(pattern, buffer) and len(buffer) >= 19:
+            if buffer.startswith(pattern) and len(buffer) >= 19:
+                logging.info(f'we in  {buffer}')
                 received_data = buffer[:19]
                 buffer = buffer[19:] 
                 logging.info(f'batch is ready  {buffer}')
@@ -162,6 +163,7 @@ class Wind_Rose_logger:
                 except Exception as e:
                     # Обработка исключения
                     print("Произошла ошибка:", str(e))
+                    logging.warning('written error: ', str(e))
                     #print('Сначала закройте файл записи!')
                 break       
         

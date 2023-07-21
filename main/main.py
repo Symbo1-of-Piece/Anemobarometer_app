@@ -55,11 +55,12 @@ app.layout = html.Div(
         dcc.Graph(id="polar-plot1"),
         dcc.Graph(id="polar-plot2"),
         dcc.Graph(id="polar-plot3"),
+        dcc.Graph(id="polar-plot4"),
 
         # Устанавливаем интервал обновления в 1 секунду
         dcc.Interval(
             id="interval-component",
-            interval=1000,
+            interval=500,
             n_intervals=0,
         ),
     ]
@@ -74,7 +75,8 @@ opacity = 0.75
 @app.callback(
     [Output("polar-plot1", "figure"),
      Output("polar-plot2", "figure"),
-     Output("polar-plot3", "figure")],
+     Output("polar-plot3", "figure"),
+     Output("polar-plot4", "figure")],
     [Input("interval-component", "n_intervals")],
     prevent_initial_callbacks=True)
 
@@ -83,30 +85,42 @@ def update_polar_plots(n):
     fig1 = update_polar_plot(device_number=1)  # Передаем номер устройства в функцию
     fig2 = update_polar_plot(device_number=2)
     fig3 = update_polar_plot(device_number=3)
+    fig4 = update_polar_plot(device_number=4)
     logging.info('update_polar_plots')
-    return fig1, fig2, fig3
+    return fig1, fig2, fig3, fig4
 
 # Функция для создания графика с случайными значениями
-def get_random_data_for_plot():
-    r_random = [random.uniform(0, 20)]  # Сила ветра
-    theta_random = [random.uniform(0, 360)]  # Угол ветра
+def create_random_data_for_plot():
+    r_random = [round(random.uniform(0, 20),1)]  # Сила ветра
+    theta_random = [round(random.uniform(0, 360),0)]  # Угол ветра
     df_random = pd.DataFrame({'speed': [r_random], 'direction': [theta_random]})
-    logging.info('random data created and return')
+    logging.info('df_random created')
     return df_random
 
-def update_polar_plot(device_number):
+def get_random_data():
+    df_random = create_random_data_for_plot()
+    r_random = df_random['speed'].values[0]  # Сила ветра
+    theta_random = df_random['direction'].values[0]  # Угол ветра
+    logging.info(f'random values received: {r_random}, {theta_random}')
+    return r_random, theta_random
+
+def get_data_from_RW_class():
     try:
-        df = logger_WR.get_data()
-        r = [df['WindSpeed'].values[0]]         # скорость ветра
-        theta = [df['WindDir_1min'].values[0]]  # угол направления ветра
-        logging.info(f'r, theta received: {r}, {theta}')
+        df_WR = logger_WR.get_data()
+        r_WR = [df_WR['WindSpeed'].values[0]]         # скорость ветра
+        theta_WR = [df_WR['WindDir_1min'].values[0]]  # угол направления ветра
+        logging.info(f'r, theta received: {r_WR}, {theta_WR}')
+        return r_WR, theta_WR
     except Exception as e:
         logging.warning(f'r, theta did not received. {e}')
         print("Произошла ошибка", str(e))
 
-    df_random = get_random_data_for_plot() 
-    r_random = df_random['speed'].values[0]
-    theta_random = df_random['direction'].values[0]
+def update_polar_plot(device_number):
+    
+    if device_number == 1:
+        r, theta = get_data_from_RW_class() 
+    else:
+        r, theta = get_random_data()
     logging.info('random and real data received')
 
     # Создаем объект графика в полярной системе координат

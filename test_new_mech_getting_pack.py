@@ -144,8 +144,8 @@ class Wind_Rose_logger:
                 data_dict, string = self.unpack_message(received_data)
                 try:
                     self.save_to_csv(string, name_addition)
-                    #print(data_dict)
-                    #print()
+                    print(data_dict)
+                    print()
                 except:
                     print('Сначала закройте файл записи!')
                 break       
