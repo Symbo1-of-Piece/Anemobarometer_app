@@ -1,6 +1,7 @@
 import os
 import logging
 import pandas as pd
+import socket
 
 try:
     import re
@@ -9,16 +10,13 @@ except:
     import re
 
 try:
-    import socket
-except:
-    os.system('pip install socket')
-    import socket
-
-try:
     import datetime
+    from datetime import timedelta
 except:
     os.system('pip install datetime')
     import datetime
+    from datetime import timedelta
+
 
 
 
@@ -57,36 +55,6 @@ class Wind_Rose_logger:
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.client.connect(self.address_to_server)
         logging.info('logger initialized')
-        
-
-
-    def save_to_csv(self, string, name_addition=''):
-        """
-        Создает csv файл с именем в формате: приставка_имени+дата+.csv , или добавляет строку данных в существующий с таким именем файл csv.
-        
-        Параметры:
-        - string (str): строка данных, которая будет записана в файл.
-        - name_addition (str): приставка к имени файла для тестов и отладки.
-        """
-        logger_path = os.path.dirname(os.path.realpath(__file__)) + '/logs/'
-        time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S:')
-        date_now = time_now.split()[0]
-        writepath = logger_path + date_now  + name_addition + '.csv'
-
-        mode = 'a' if os.path.exists(writepath) else 'w'
-
-        with open(logger_path + name_addition + date_now + '.csv', mode) as file:
-            if mode == 'w':
-                file.write('Datetime, WindSpeed, WindGust_10min, WindSpeed_10min, WindSpeed_1min, WindDir_1min, WindDir_10min  \n')
-                print('file created with name ' + name_addition + date_now + '.csv')
-                logging.info('file created')
-                file.close()
-            elif mode == 'a':
-                file.write(time_now + ',' + string)
-                logging.info('string written to file')
-                print('WRITE: ', time_now + ',' + string)
-                file.close()
-
 
     def unpack_message(self, received_data):
         """
@@ -99,6 +67,12 @@ class Wind_Rose_logger:
         - data_dict (dict): словарь с данными.
         - string (str): строка данных, которая была распакована.
         """
+
+        # Получим все необходимые для программы переменные времени
+        datetime_now = datetime.datetime.now().replace(microsecond=0)
+        alarm_off_time = datetime_now + datetime.timedelta(minutes=1)
+        time_for_csv = datetime_now.strftime('%Y-%m-%d %H:%M:%S')
+        
         try:
             SokolAnswer = received_data.hex()  
 
@@ -115,7 +89,8 @@ class Wind_Rose_logger:
             string = ','.join(str(item) for item in list_for_string) + '\n'
 
             data_dict = {
-                    'datetime': pd.Timestamp(datetime.datetime.now().replace(microsecond=0)).timestamp(),
+                    'datetime_now': datetime_now,
+                    'alarm_off_time': alarm_off_time,
                     'WindSpeed': WindSpeed,
                     'WindGust_10min': WindGust_10min,
                     'WindSpeed_10min': WindSpeed_10min,
@@ -123,12 +98,36 @@ class Wind_Rose_logger:
                     'WindDir_1min': WindDir_1min,
                     'WindDir_10min': WindDir_10min}
             logging.info('data is unpacked')
-            return data_dict, string
+            return data_dict, string, time_for_csv
 
         except socket.error as e:
             logging.warning(f'data do not unpacked: {e}')
             print("Произошла ошибка, что грустно", str(e), len(received_data))
 
+    def save_to_csv(self, string, time_for_csv, name_addition=''):
+        """
+        Создает csv файл с именем в формате: приставка_имени+дата+.csv , или добавляет строку данных в существующий с таким именем файл csv.
+        
+        Параметры:
+        - string (str): строка данных, которая будет записана в файл.
+        - name_addition (str): приставка к имени файла для тестов и отладки.
+        """
+        logger_path = os.path.dirname(os.path.realpath(__file__)) + '/logs/'
+        date_for_name = time_for_csv.split()[0]
+        writepath = logger_path + date_for_name  + name_addition + '.csv'
+        mode = 'a' if os.path.exists(writepath) else 'w'
+
+        with open(logger_path + name_addition + date_for_name + '.csv', mode) as file:
+            if mode == 'w':
+                file.write('Datetime, WindSpeed, WindGust_10min, WindSpeed_10min, WindSpeed_1min, WindDir_1min, WindDir_10min  \n')
+                print('file created with name ' + name_addition + date_for_name + '.csv')
+                logging.info('file created')
+                file.close()
+            elif mode == 'a':
+                file.write(time_for_csv + ',' + string)
+                logging.info('string written to file')
+                print('WRITE: ', time_for_csv + ',' + string)
+                file.close()
 
     def get_data(self, name_addition=''):
         """
@@ -148,17 +147,18 @@ class Wind_Rose_logger:
 
         while True:
             input_data = self.client.recv(10)  # Читаем небольшой фрагмент данных
-            logging.info(f'get batch {buffer}')
+            logging.info(f'get batch {input_data}, length: {len(input_data)}')
             buffer += input_data
+            logging.info(f'buffer: {buffer}, length: {len(buffer)}')
 
             if buffer.startswith(pattern) and len(buffer) >= 19:
                 logging.info(f'we in  {buffer}')
                 received_data = buffer[:19]
                 buffer = buffer[19:] 
-                logging.info(f'batch is ready  {buffer}')
-                data_dict, string = self.unpack_message(received_data)
+                logging.info(f'buffer is ready  {buffer}, length: {len(buffer)}')
+                data_dict, string, time_for_csv = self.unpack_message(received_data)
                 try:
-                    self.save_to_csv(string, name_addition)
+                    self.save_to_csv(string, time_for_csv, name_addition)
 
                 except Exception as e:
                     # Обработка исключения
@@ -167,6 +167,5 @@ class Wind_Rose_logger:
                     #print('Сначала закройте файл записи!')
                 break       
         
-
         df = pd.DataFrame(data=data_dict, index=[0])
         return df

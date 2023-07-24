@@ -60,7 +60,7 @@ app.layout = html.Div(
         # Устанавливаем интервал обновления в 1 секунду
         dcc.Interval(
             id="interval-component",
-            interval=1000,
+            interval=2000,
             n_intervals=0,
         ),
     ]
@@ -82,10 +82,57 @@ opacity = 0.75
 
 # Генерируем случайные значения для графиков
 def update_polar_plots(n):
-    fig1 = update_polar_plot(device_number=1)  # Передаем номер устройства в функцию
-    fig2 = update_polar_plot(device_number=2)
-    fig3 = update_polar_plot(device_number=3)
-    fig4 = update_polar_plot(device_number=4)
+    datetime_now = datetime.datetime.now().replace(microsecond=0)
+    alarm_off_time = datetime_now + datetime.timedelta(minutes=1)
+
+    fig1, r = update_polar_plot(device_number=1)
+    if r[0] >= 17: 
+        visible_1 = True 
+        alarm_off_time_1 = alarm_off_time
+    else: 
+        visible_1 = False
+    fig1.add_annotation(xref='paper', x=1.30, y=1,
+            text="ВНИМАНИЕ<br>сильный ветер!",
+            showarrow=False, #arrowhead='arrow',
+            font=dict(size=25, color='red'),
+            align='center', visible=visible_1,
+            width=450)
+
+    fig2, r = update_polar_plot(device_number=2)
+    if r[0] >= 17:
+        visible_2 = True
+        alarm_off_time_2 = alarm_off_time
+    else: visible_2 = False
+    fig2.add_annotation(xref='paper', x=1.30, y=1,
+            text="ВНИМАНИЕ<br>сильный ветер!",
+            showarrow=False, #arrowhead='arrow',
+            font=dict(size=25, color='red'),
+            align='center', visible=visible_2,
+            width=450)
+    
+    fig3, r = update_polar_plot(device_number=3)
+    if r[0] >= 17:
+        visible_3 = True
+        alarm_off_time_3 = alarm_off_time
+    else: visible_3 = False
+    fig3.add_annotation(xref='paper', x=1.30, y=1,
+            text="ВНИМАНИЕ<br>сильный ветер!",
+            showarrow=False, #arrowhead='arrow',
+            font=dict(size=25, color='red'),
+            align='center', visible=visible_3,
+            width=450)
+    
+    fig4, r = update_polar_plot(device_number=4)
+    if r[0] >= 17:
+        visible_4 = True
+        alarm_off_time_4 = alarm_off_time
+    else: visible_4 = False
+    fig4.add_annotation(xref='paper', x=1.30, y=1,
+            text="ВНИМАНИЕ<br>сильный ветер!",
+            showarrow=False, #arrowhead='arrow',
+            font=dict(size=25, color='red'),
+            align='center', visible=visible_4,
+            width=450)
     logging.info('update_polar_plots')
     return fig1, fig2, fig3, fig4
 
@@ -101,16 +148,20 @@ def get_random_data():
     df_random = create_random_data_for_plot()
     r_random = df_random['speed'].values[0]  # Сила ветра
     theta_random = df_random['direction'].values[0]  # Угол ветра
+    datetime_for_rand = pd.Timestamp(datetime.datetime.now().replace(microsecond=0)).timestamp()
+    alarm_off_time_rand = datetime_for_rand + 60
     logging.info(f'random values received: {r_random}, {theta_random}')
-    return r_random, theta_random
+    return r_random, theta_random, datetime_for_rand, alarm_off_time_rand
 
 def get_data_from_RW_class():
     try:
         df_WR = logger_WR.get_data()
+        datetime_WR = [df_WR['datetime_now'].values[0]]
+        alarm_off_time_WR = [df_WR['alarm_off_time'].values[0]]
         r_WR = [df_WR['WindSpeed'].values[0]]         # скорость ветра
         theta_WR = [df_WR['WindDir_1min'].values[0]]  # угол направления ветра
         logging.info(f'r, theta received: {r_WR}, {theta_WR}')
-        return r_WR, theta_WR
+        return r_WR, theta_WR, datetime_WR, alarm_off_time_WR
     except Exception as e:
         logging.warning(f'r, theta did not received. {e}')
         print("Произошла ошибка", str(e))
@@ -118,9 +169,10 @@ def get_data_from_RW_class():
 def update_polar_plot(device_number):
     
     if device_number == 1:
-        r, theta = get_data_from_RW_class() 
+        r, theta, datetime_WR, alarm_off_time_WR = get_data_from_RW_class() 
     else:
-        r, theta = get_random_data()
+        r, theta, datetime_for_rand, alarm_off_time_rand = get_random_data()
+        
     logging.info('random and real data received')
 
     # Создаем объект графика в полярной системе координат
@@ -137,18 +189,6 @@ def update_polar_plot(device_number):
         name = f"Скорость ветра: {r[0]:.1f} м/с<br>Направление: {theta[0]:.0f}°"))
     logging.info('Barpolar plot created')
 
-    fig.add_annotation(
-        xref='paper',          # Относительно ширины холста (в процентах)
-        x=1.05,       
-        y=1,
-        text="ВНИМАНИЕ<br>сильный ветер!",
-        showarrow=False,
-        #arrowhead='arrow',
-        font=dict(size=25, color='red'),
-        align='center',
-        visible=True,
-        width=450 
-    )
 
     try:
         fig.update_layout(title= f'Устройство №: {device_number}', width=800, height=520, 
@@ -170,7 +210,7 @@ def update_polar_plot(device_number):
         fig.update_xaxes(showgrid=False, zeroline=False, showticklabels=False)  # Убираем оси и метки на графике
         fig.update_yaxes(showgrid=False, zeroline=False, showticklabels=False)
         logging.info('figure returned')                              
-        return fig
+        return fig, r
     except Exception as e:
         logging.warning(f'Barpolar plot did not created. {e}')
 

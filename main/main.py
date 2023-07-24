@@ -60,7 +60,7 @@ app.layout = html.Div(
         # Устанавливаем интервал обновления в 1 секунду
         dcc.Interval(
             id="interval-component",
-            interval=500,
+            interval=1000,
             n_intervals=0,
         ),
     ]
