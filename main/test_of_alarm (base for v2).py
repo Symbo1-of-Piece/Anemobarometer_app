@@ -2,6 +2,8 @@ import random
 import os
 import logging
 from Wind_Rose_logger import Wind_Rose_logger
+from Alarm_Class import Alarm_Class
+import socket
 
 # Установка библиотек при первом запуске программы, если это необходимо
 try:
@@ -41,7 +43,11 @@ except:
     import webbrowser
 
 import datetime
-logger_WR = Wind_Rose_logger()
+try:
+    logger_WR = Wind_Rose_logger()
+except socket.error as se:
+    logging.error(f"Socket error occurred: {se}")
+    print('обрыв соединения, попробуем еще  раз')
 
 # Создаем объект приложения Dash
 app = dash.Dash(__name__)
@@ -60,7 +66,7 @@ app.layout = html.Div(
         # Устанавливаем интервал обновления в 1 секунду
         dcc.Interval(
             id="interval-component",
-            interval=2000,
+            interval=1500,
             n_intervals=0,
         ),
     ]
@@ -70,6 +76,12 @@ logging.info('layout created')
 # устанавливаем цвет и прозрачность стрелки
 marker_style = dict(color='rgb(30, 136, 229)', line=dict(color='rgb(30, 136, 229)', width=1))
 opacity = 0.75
+
+# Инициализируем класс Alarm
+alarm_1 = Alarm_Class()
+alarm_2 = Alarm_Class()
+alarm_3 = Alarm_Class()
+alarm_4 = Alarm_Class()
 
 # Определяем функцию-колбэк для обновления графиков
 @app.callback(
@@ -86,11 +98,7 @@ def update_polar_plots(n):
     alarm_off_time = datetime_now + datetime.timedelta(minutes=1)
 
     fig1, r = update_polar_plot(device_number=1)
-    if r[0] >= 17: 
-        visible_1 = True 
-        alarm_off_time_1 = alarm_off_time
-    else: 
-        visible_1 = False
+    visible_1 = alarm_1.alarm_label(r)
     fig1.add_annotation(xref='paper', x=1.30, y=1,
             text="ВНИМАНИЕ<br>сильный ветер!",
             showarrow=False, #arrowhead='arrow',
@@ -98,11 +106,8 @@ def update_polar_plots(n):
             align='center', visible=visible_1,
             width=450)
 
-    fig2, r = update_polar_plot(device_number=2)
-    if r[0] >= 17:
-        visible_2 = True
-        alarm_off_time_2 = alarm_off_time
-    else: visible_2 = False
+    fig2, r = update_polar_plot(device_number=2) 
+    visible_2 = alarm_2.alarm_label(r)
     fig2.add_annotation(xref='paper', x=1.30, y=1,
             text="ВНИМАНИЕ<br>сильный ветер!",
             showarrow=False, #arrowhead='arrow',
@@ -111,10 +116,7 @@ def update_polar_plots(n):
             width=450)
     
     fig3, r = update_polar_plot(device_number=3)
-    if r[0] >= 17:
-        visible_3 = True
-        alarm_off_time_3 = alarm_off_time
-    else: visible_3 = False
+    visible_3 = alarm_3.alarm_label(r)
     fig3.add_annotation(xref='paper', x=1.30, y=1,
             text="ВНИМАНИЕ<br>сильный ветер!",
             showarrow=False, #arrowhead='arrow',
@@ -123,10 +125,7 @@ def update_polar_plots(n):
             width=450)
     
     fig4, r = update_polar_plot(device_number=4)
-    if r[0] >= 17:
-        visible_4 = True
-        alarm_off_time_4 = alarm_off_time
-    else: visible_4 = False
+    visible_4 = alarm_4.alarm_label(r)
     fig4.add_annotation(xref='paper', x=1.30, y=1,
             text="ВНИМАНИЕ<br>сильный ветер!",
             showarrow=False, #arrowhead='arrow',

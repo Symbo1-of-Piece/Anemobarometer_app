@@ -26,7 +26,7 @@ logging.basicConfig(filename="Rose_Wind__logger_program_3.log", level=logging.DE
 
 class Wind_Rose_logger:
     """
-    Описание класса Wind_Rose_logger. Предназначен для логирования работы флюгера-анемометра (далее ФА) и записи логов в формате CSV
+    Описание класса Wind_Rose_logger: Предназначен для логирования работы флюгера-анемометра (далее ФА) и записи логов в формате CSV
     Получает на входе байтовую строку, содержащую информацию о силе и направлении ветра, зарегистрированных датчиками устройства.
     на выходе возвращает df (pandas.DataFrame), содержащий значения каждого параметра и файл csv
 
@@ -46,7 +46,7 @@ class Wind_Rose_logger:
         """
         Конструктор класса Wind_Rose_logger.
         Создает объект класса socket. Тип сокета - TSP-клиент. 
-        Происходит подключение к серверу по указанным адресом и портом по протоколу IPv4 
+        Происходит подключение к серверу по указанным адресу и порту по протоколу IPv4 
 
         Параметры:
         - port (str): название COM-порта устройства, к которому подключается ГА.
@@ -146,12 +146,12 @@ class Wind_Rose_logger:
         logging.info('message has sent')
 
         while True:
-            input_data = self.client.recv(10)  # Читаем небольшой фрагмент данных
+            input_data = self.client.recv(19)  # Читаем небольшой фрагмент данных
             logging.info(f'get batch {input_data}, length: {len(input_data)}')
             buffer += input_data
             logging.info(f'buffer: {buffer}, length: {len(buffer)}')
 
-            if buffer.startswith(pattern) and len(buffer) >= 19:
+            if buffer.startswith(pattern) and len(buffer) == 19:
                 logging.info(f'we in  {buffer}')
                 received_data = buffer[:19]
                 buffer = buffer[19:] 
@@ -165,7 +165,22 @@ class Wind_Rose_logger:
                     print("Произошла ошибка:", str(e))
                     logging.warning('written error: ', str(e))
                     #print('Сначала закройте файл записи!')
-                break       
+                    buffer = b''
+                    buffer = b''
+                    data_dict = {'datetime_now': datetime.datetime.now().replace(microsecond=0),
+                                 'alarm_off_time': 0,
+                                 'WindSpeed': 0,
+                                 'WindGust_10min': 0,
+                                 'WindSpeed_10min': 0,
+                                 'WindSpeed_1min': 0,
+                                 'WindDir_1min': 0,
+                                 'WindDir_10min': 0}
+                    df = pd.DataFrame(data_dict, index=[0])
+                break   
+            else:
+                logging.warning('buffer is bad: {buffer}')
+                buffer = b''    
         
         df = pd.DataFrame(data=data_dict, index=[0])
+        logging.info(f'df returned to Dash')
         return df
