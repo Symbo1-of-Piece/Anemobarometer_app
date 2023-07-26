@@ -70,7 +70,6 @@ class Wind_Rose_logger:
 
         # Получим все необходимые для программы переменные времени
         datetime_now = datetime.datetime.now().replace(microsecond=0)
-        alarm_off_time = datetime_now + datetime.timedelta(minutes=1)
         time_for_csv = datetime_now.strftime('%Y-%m-%d %H:%M:%S')
         
         try:
@@ -90,7 +89,6 @@ class Wind_Rose_logger:
 
             data_dict = {
                     'datetime_now': datetime_now,
-                    'alarm_off_time': alarm_off_time,
                     'WindSpeed': WindSpeed,
                     'WindGust_10min': WindGust_10min,
                     'WindSpeed_10min': WindSpeed_10min,
@@ -111,6 +109,7 @@ class Wind_Rose_logger:
         Параметры:
         - string (str): строка данных, которая будет записана в файл.
         - name_addition (str): приставка к имени файла для тестов и отладки.
+        - time_for_csv (str): текущие дата и время
         """
         logger_path = os.path.dirname(os.path.realpath(__file__)) + '/logs/'
         date_for_name = time_for_csv.split()[0]
@@ -126,7 +125,7 @@ class Wind_Rose_logger:
             elif mode == 'a':
                 file.write(time_for_csv + ',' + string)
                 logging.info('string written to file')
-                print('WRITE: ', time_for_csv + ',' + string)
+                print('Записана строка: ', time_for_csv + ',' + string)
                 file.close()
 
     def get_data(self, name_addition=''):
@@ -139,14 +138,14 @@ class Wind_Rose_logger:
         Возвращает:
         - df (pandas.DataFrame): данные из ФА.
         """
-        buffer = b''
-        message = b'\x01\x03\x00\x00\x00\x07\x04\x08'
+        buffer = b'' # Инициализируем пустой буфер
+        message = b'\x01\x03\x00\x00\x00\x07\x04\x08' # Сообщение устройству, для получения от него данных 
         pattern = b'\x01\x03\x0e' # Паттерн для определения начала пакета
         self.client.send(message)
         logging.info('message has sent')
 
         while True:
-            input_data = self.client.recv(19)  # Читаем небольшой фрагмент данных
+            input_data = self.client.recv(19)  # Читаем пакет данных
             logging.info(f'get batch {input_data}, length: {len(input_data)}')
             buffer += input_data
             logging.info(f'buffer: {buffer}, length: {len(buffer)}')
@@ -161,21 +160,19 @@ class Wind_Rose_logger:
                     self.save_to_csv(string, time_for_csv, name_addition)
 
                 except Exception as e:
-                    # Обработка исключения
-                    print("Произошла ошибка:", str(e))
+                    #print("Произошла ошибка:", str(e))
                     logging.warning('written error: ', str(e))
-                    #print('Сначала закройте файл записи!')
-                    buffer = b''
+                    print('Сначала закройте файл записи!')
                     buffer = b''
                     data_dict = {'datetime_now': datetime.datetime.now().replace(microsecond=0),
-                                 'alarm_off_time': 0,
                                  'WindSpeed': 0,
                                  'WindGust_10min': 0,
                                  'WindSpeed_10min': 0,
                                  'WindSpeed_1min': 0,
                                  'WindDir_1min': 0,
                                  'WindDir_10min': 0}
-                    df = pd.DataFrame(data_dict, index=[0])
+                    # если произойдет ошибка, то вернется пустой Df и программа не упадет
+                    df = pd.DataFrame(data_dict, index=[0]) 
                 break   
             else:
                 logging.warning('buffer is bad: {buffer}')
