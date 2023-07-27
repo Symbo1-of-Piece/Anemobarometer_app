@@ -34,6 +34,7 @@ Sokol-A anemobarometer
 - random: библиотека для генерации случайных чисел
 - logging: модуль Python для логирования действий программы на разном уровне
 - socket: библиотека для взаимодействия с внешними устройствами по сети
+- dash: фреймворк Python для создания графического интерфейса
 
 Модули программы
 - Wind_Rose_logger.py - модуль для получения и расшифровки данных с устройства
@@ -62,6 +63,7 @@ Technologies and Libraries
 - random: a library for generating random numbers.
 - logging: Python module for logging program actions at different levels.
 - socket: a library for interacting with external devices over the network.
+- dash: Framework Python for creating graphical interface.
 
 Program Modules
 - Wind_Rose_logger.py: a module for receiving and decoding data from the device.
