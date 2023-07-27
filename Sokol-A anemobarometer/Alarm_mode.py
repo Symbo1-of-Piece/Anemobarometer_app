@@ -1,6 +1,6 @@
 import datetime
 
-class Alarm_Class:
+class Alarm_mode:
     """
     Описание класса: Предназначен для активации окна add_annotation в Dash.
     Если скорость ветра превышает установленный лимит, то в окне Dash активируется окно предупреждения на 5 сек.
@@ -24,7 +24,7 @@ class Alarm_Class:
         """
         В зависимости от значения скорости ветра возвращает True или False для переменной visible
  
-        Параметры:
+        Параметры: 
         - r (list):  список со значением скорости ветра.
 
         Возвращает:
@@ -39,10 +39,10 @@ class Alarm_Class:
                 self.visible = True
                 #logging.info('alarm is occurred')
                 self.alarm_off_time = turn_off_time
-                self.warning_speed = r[0]
+                self.warning_speed = r[0] # Сохраняем  r[0] при котором сработал alarm
             else:
                 self.visible = False
         else:
             self.visible = True
-            print(type(self.visible, self.warning_speed ))
+
         return self.visible, self.warning_speed

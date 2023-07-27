@@ -21,7 +21,7 @@ except:
 
 
 # Логирование работы программы логирования ^_^
-logging.basicConfig(filename="Rose_Wind__logger_program_3.log", level=logging.DEBUG,
+logging.basicConfig(filename="Rose_Wind_logger_program.log", level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s') 
 
 class Wind_Rose_logger:

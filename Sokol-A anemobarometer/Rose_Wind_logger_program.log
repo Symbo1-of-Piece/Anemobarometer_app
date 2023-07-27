@@ -1,0 +1,247 @@
+2023-07-27 16:00:47,410 - INFO - logger initialized
+2023-07-27 16:00:47,411 - INFO - Wind_Rose_logger inicialized
+2023-07-27 16:00:47,411 - INFO - Alarm_Class inicialized
+2023-07-27 16:00:47,420 - INFO - app created
+2023-07-27 16:00:47,421 - INFO - layout created
+2023-07-27 16:00:47,764 - INFO - Dash is running on http://127.0.0.1:8025/
+
+2023-07-27 16:00:47,781 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8025
+2023-07-27 16:00:47,781 - INFO - [33mPress CTRL+C to quit[0m
+2023-07-27 16:00:48,209 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:48] "GET / HTTP/1.1" 200 -
+2023-07-27 16:00:48,459 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:48] "GET /_dash-layout HTTP/1.1" 200 -
+2023-07-27 16:00:48,494 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:48] "GET /_dash-dependencies HTTP/1.1" 200 -
+2023-07-27 16:00:48,910 - INFO - message has sent
+2023-07-27 16:00:48,914 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:48] "[36mGET /_dash-component-suites/dash/dcc/async-graph.js HTTP/1.1[0m" 304 -
+2023-07-27 16:00:48,950 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:48] "[36mGET /_dash-component-suites/dash/dcc/async-plotlyjs.js HTTP/1.1[0m" 304 -
+2023-07-27 16:00:48,950 - INFO - get batch b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X', length: 19
+2023-07-27 16:00:48,951 - INFO - buffer: b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X', length: 19
+2023-07-27 16:00:48,951 - INFO - we in  b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X'
+2023-07-27 16:00:48,951 - INFO - buffer is ready  b'', length: 0
+2023-07-27 16:00:48,952 - INFO - data is unpacked
+2023-07-27 16:00:48,953 - INFO - string written to file
+2023-07-27 16:00:48,956 - INFO - df returned to Dash
+2023-07-27 16:00:48,956 - INFO - r, theta received: [0.0], [167]
+2023-07-27 16:00:48,956 - INFO - random and real data received
+2023-07-27 16:00:49,038 - INFO - Barpolar plot created
+2023-07-27 16:00:49,111 - INFO - figure returned
+2023-07-27 16:00:49,135 - INFO - df_random created
+2023-07-27 16:00:49,135 - INFO - random values received: [11.3], [102.0]
+2023-07-27 16:00:49,135 - INFO - random and real data received
+2023-07-27 16:00:49,139 - INFO - Barpolar plot created
+2023-07-27 16:00:49,157 - INFO - figure returned
+2023-07-27 16:00:49,158 - INFO - df_random created
+2023-07-27 16:00:49,159 - INFO - random values received: [6.5], [207.0]
+2023-07-27 16:00:49,159 - INFO - random and real data received
+2023-07-27 16:00:49,162 - INFO - Barpolar plot created
+2023-07-27 16:00:49,178 - INFO - figure returned
+2023-07-27 16:00:49,180 - INFO - df_random created
+2023-07-27 16:00:49,180 - INFO - random values received: [19.7], [192.0]
+2023-07-27 16:00:49,180 - INFO - random and real data received
+2023-07-27 16:00:49,184 - INFO - Barpolar plot created
+2023-07-27 16:00:49,200 - INFO - figure returned
+2023-07-27 16:00:49,201 - INFO - update_polar_plots
+2023-07-27 16:00:49,210 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:49] "POST /_dash-update-component HTTP/1.1" 200 -
+2023-07-27 16:00:49,777 - INFO - message has sent
+2023-07-27 16:00:49,900 - INFO - get batch b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X', length: 19
+2023-07-27 16:00:49,900 - INFO - buffer: b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X', length: 19
+2023-07-27 16:00:49,900 - INFO - we in  b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X'
+2023-07-27 16:00:49,901 - INFO - buffer is ready  b'', length: 0
+2023-07-27 16:00:49,901 - INFO - data is unpacked
+2023-07-27 16:00:49,902 - INFO - string written to file
+2023-07-27 16:00:49,903 - INFO - df returned to Dash
+2023-07-27 16:00:49,904 - INFO - r, theta received: [0.0], [167]
+2023-07-27 16:00:49,904 - INFO - random and real data received
+2023-07-27 16:00:49,907 - INFO - Barpolar plot created
+2023-07-27 16:00:49,924 - INFO - figure returned
+2023-07-27 16:00:49,925 - INFO - df_random created
+2023-07-27 16:00:49,925 - INFO - random values received: [1.8], [53.0]
+2023-07-27 16:00:49,926 - INFO - random and real data received
+2023-07-27 16:00:49,928 - INFO - Barpolar plot created
+2023-07-27 16:00:49,944 - INFO - figure returned
+2023-07-27 16:00:49,945 - INFO - df_random created
+2023-07-27 16:00:49,945 - INFO - random values received: [5.5], [100.0]
+2023-07-27 16:00:49,945 - INFO - random and real data received
+2023-07-27 16:00:49,949 - INFO - Barpolar plot created
+2023-07-27 16:00:49,964 - INFO - figure returned
+2023-07-27 16:00:49,965 - INFO - df_random created
+2023-07-27 16:00:49,965 - INFO - random values received: [5.7], [97.0]
+2023-07-27 16:00:49,966 - INFO - random and real data received
+2023-07-27 16:00:49,969 - INFO - Barpolar plot created
+2023-07-27 16:00:49,984 - INFO - figure returned
+2023-07-27 16:00:49,985 - INFO - update_polar_plots
+2023-07-27 16:00:50,024 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:50] "POST /_dash-update-component HTTP/1.1" 200 -
+2023-07-27 16:00:50,947 - INFO - message has sent
+2023-07-27 16:00:51,111 - INFO - get batch b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X', length: 19
+2023-07-27 16:00:51,111 - INFO - buffer: b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X', length: 19
+2023-07-27 16:00:51,111 - INFO - we in  b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X'
+2023-07-27 16:00:51,111 - INFO - buffer is ready  b'', length: 0
+2023-07-27 16:00:51,111 - INFO - data is unpacked
+2023-07-27 16:00:51,112 - INFO - string written to file
+2023-07-27 16:00:51,114 - INFO - df returned to Dash
+2023-07-27 16:00:51,114 - INFO - r, theta received: [0.0], [167]
+2023-07-27 16:00:51,114 - INFO - random and real data received
+2023-07-27 16:00:51,118 - INFO - Barpolar plot created
+2023-07-27 16:00:51,136 - INFO - figure returned
+2023-07-27 16:00:51,138 - INFO - df_random created
+2023-07-27 16:00:51,138 - INFO - random values received: [0.9], [120.0]
+2023-07-27 16:00:51,138 - INFO - random and real data received
+2023-07-27 16:00:51,142 - INFO - Barpolar plot created
+2023-07-27 16:00:51,159 - INFO - figure returned
+2023-07-27 16:00:51,160 - INFO - df_random created
+2023-07-27 16:00:51,160 - INFO - random values received: [19.2], [71.0]
+2023-07-27 16:00:51,160 - INFO - random and real data received
+2023-07-27 16:00:51,163 - INFO - Barpolar plot created
+2023-07-27 16:00:51,179 - INFO - figure returned
+2023-07-27 16:00:51,181 - INFO - df_random created
+2023-07-27 16:00:51,181 - INFO - random values received: [19.1], [347.0]
+2023-07-27 16:00:51,181 - INFO - random and real data received
+2023-07-27 16:00:51,184 - INFO - Barpolar plot created
+2023-07-27 16:00:51,200 - INFO - figure returned
+2023-07-27 16:00:51,203 - INFO - update_polar_plots
+2023-07-27 16:00:51,210 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:51] "POST /_dash-update-component HTTP/1.1" 200 -
+2023-07-27 16:00:51,605 - INFO - message has sent
+2023-07-27 16:00:51,646 - INFO - get batch b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X', length: 19
+2023-07-27 16:00:51,647 - INFO - buffer: b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X', length: 19
+2023-07-27 16:00:51,647 - INFO - we in  b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X'
+2023-07-27 16:00:51,647 - INFO - buffer is ready  b'', length: 0
+2023-07-27 16:00:51,647 - INFO - data is unpacked
+2023-07-27 16:00:51,648 - INFO - string written to file
+2023-07-27 16:00:51,649 - INFO - df returned to Dash
+2023-07-27 16:00:51,650 - INFO - r, theta received: [0.0], [167]
+2023-07-27 16:00:51,650 - INFO - random and real data received
+2023-07-27 16:00:51,654 - INFO - Barpolar plot created
+2023-07-27 16:00:51,671 - INFO - figure returned
+2023-07-27 16:00:51,672 - INFO - df_random created
+2023-07-27 16:00:51,673 - INFO - random values received: [12.1], [64.0]
+2023-07-27 16:00:51,673 - INFO - random and real data received
+2023-07-27 16:00:51,676 - INFO - Barpolar plot created
+2023-07-27 16:00:51,691 - INFO - figure returned
+2023-07-27 16:00:51,693 - INFO - df_random created
+2023-07-27 16:00:51,693 - INFO - random values received: [4.5], [289.0]
+2023-07-27 16:00:51,693 - INFO - random and real data received
+2023-07-27 16:00:51,697 - INFO - Barpolar plot created
+2023-07-27 16:00:51,713 - INFO - figure returned
+2023-07-27 16:00:51,715 - INFO - df_random created
+2023-07-27 16:00:51,715 - INFO - random values received: [6.2], [222.0]
+2023-07-27 16:00:51,715 - INFO - random and real data received
+2023-07-27 16:00:51,719 - INFO - Barpolar plot created
+2023-07-27 16:00:51,733 - INFO - figure returned
+2023-07-27 16:00:51,735 - INFO - update_polar_plots
+2023-07-27 16:00:51,741 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:51] "POST /_dash-update-component HTTP/1.1" 200 -
+2023-07-27 16:00:52,921 - INFO - message has sent
+2023-07-27 16:00:53,035 - INFO - get batch b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X', length: 19
+2023-07-27 16:00:53,035 - INFO - buffer: b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X', length: 19
+2023-07-27 16:00:53,035 - INFO - we in  b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa7\x00\xa8\xb0X'
+2023-07-27 16:00:53,035 - INFO - buffer is ready  b'', length: 0
+2023-07-27 16:00:53,035 - INFO - data is unpacked
+2023-07-27 16:00:53,036 - INFO - string written to file
+2023-07-27 16:00:53,039 - INFO - df returned to Dash
+2023-07-27 16:00:53,039 - INFO - r, theta received: [0.0], [167]
+2023-07-27 16:00:53,039 - INFO - random and real data received
+2023-07-27 16:00:53,044 - INFO - Barpolar plot created
+2023-07-27 16:00:53,061 - INFO - figure returned
+2023-07-27 16:00:53,062 - INFO - df_random created
+2023-07-27 16:00:53,063 - INFO - random values received: [12.9], [250.0]
+2023-07-27 16:00:53,063 - INFO - random and real data received
+2023-07-27 16:00:53,066 - INFO - Barpolar plot created
+2023-07-27 16:00:53,082 - INFO - figure returned
+2023-07-27 16:00:53,083 - INFO - df_random created
+2023-07-27 16:00:53,083 - INFO - random values received: [17.8], [297.0]
+2023-07-27 16:00:53,083 - INFO - random and real data received
+2023-07-27 16:00:53,087 - INFO - Barpolar plot created
+2023-07-27 16:00:53,104 - INFO - figure returned
+2023-07-27 16:00:53,105 - INFO - df_random created
+2023-07-27 16:00:53,105 - INFO - random values received: [13.7], [58.0]
+2023-07-27 16:00:53,106 - INFO - random and real data received
+2023-07-27 16:00:53,109 - INFO - Barpolar plot created
+2023-07-27 16:00:53,125 - INFO - figure returned
+2023-07-27 16:00:53,127 - INFO - update_polar_plots
+2023-07-27 16:00:53,133 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:53] "POST /_dash-update-component HTTP/1.1" 200 -
+2023-07-27 16:00:53,609 - INFO - message has sent
+2023-07-27 16:00:53,650 - INFO - get batch b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa6\x00\xa8\xb1\xc8', length: 19
+2023-07-27 16:00:53,650 - INFO - buffer: b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa6\x00\xa8\xb1\xc8', length: 19
+2023-07-27 16:00:53,650 - INFO - we in  b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa6\x00\xa8\xb1\xc8'
+2023-07-27 16:00:53,650 - INFO - buffer is ready  b'', length: 0
+2023-07-27 16:00:53,650 - INFO - data is unpacked
+2023-07-27 16:00:53,651 - INFO - string written to file
+2023-07-27 16:00:53,654 - INFO - df returned to Dash
+2023-07-27 16:00:53,655 - INFO - r, theta received: [0.0], [166]
+2023-07-27 16:00:53,655 - INFO - random and real data received
+2023-07-27 16:00:53,660 - INFO - Barpolar plot created
+2023-07-27 16:00:53,677 - INFO - figure returned
+2023-07-27 16:00:53,679 - INFO - df_random created
+2023-07-27 16:00:53,679 - INFO - random values received: [0.3], [3.0]
+2023-07-27 16:00:53,679 - INFO - random and real data received
+2023-07-27 16:00:53,682 - INFO - Barpolar plot created
+2023-07-27 16:00:53,700 - INFO - figure returned
+2023-07-27 16:00:53,702 - INFO - df_random created
+2023-07-27 16:00:53,703 - INFO - random values received: [1.9], [23.0]
+2023-07-27 16:00:53,703 - INFO - random and real data received
+2023-07-27 16:00:53,707 - INFO - Barpolar plot created
+2023-07-27 16:00:53,724 - INFO - figure returned
+2023-07-27 16:00:53,725 - INFO - df_random created
+2023-07-27 16:00:53,726 - INFO - random values received: [12.7], [114.0]
+2023-07-27 16:00:53,726 - INFO - random and real data received
+2023-07-27 16:00:53,729 - INFO - Barpolar plot created
+2023-07-27 16:00:53,744 - INFO - figure returned
+2023-07-27 16:00:53,746 - INFO - update_polar_plots
+2023-07-27 16:00:53,751 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:53] "POST /_dash-update-component HTTP/1.1" 200 -
+2023-07-27 16:00:54,922 - INFO - message has sent
+2023-07-27 16:00:54,963 - INFO - get batch b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa6\x00\xa8\xb1\xc8', length: 19
+2023-07-27 16:00:54,963 - INFO - buffer: b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa6\x00\xa8\xb1\xc8', length: 19
+2023-07-27 16:00:54,963 - INFO - we in  b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa6\x00\xa8\xb1\xc8'
+2023-07-27 16:00:54,964 - INFO - buffer is ready  b'', length: 0
+2023-07-27 16:00:54,964 - INFO - data is unpacked
+2023-07-27 16:00:54,964 - INFO - string written to file
+2023-07-27 16:00:54,967 - INFO - df returned to Dash
+2023-07-27 16:00:54,967 - INFO - r, theta received: [0.0], [166]
+2023-07-27 16:00:54,967 - INFO - random and real data received
+2023-07-27 16:00:54,972 - INFO - Barpolar plot created
+2023-07-27 16:00:54,991 - INFO - figure returned
+2023-07-27 16:00:54,992 - INFO - df_random created
+2023-07-27 16:00:54,993 - INFO - random values received: [16.5], [323.0]
+2023-07-27 16:00:54,993 - INFO - random and real data received
+2023-07-27 16:00:54,996 - INFO - Barpolar plot created
+2023-07-27 16:00:55,012 - INFO - figure returned
+2023-07-27 16:00:55,014 - INFO - df_random created
+2023-07-27 16:00:55,014 - INFO - random values received: [10.6], [103.0]
+2023-07-27 16:00:55,014 - INFO - random and real data received
+2023-07-27 16:00:55,018 - INFO - Barpolar plot created
+2023-07-27 16:00:55,034 - INFO - figure returned
+2023-07-27 16:00:55,038 - INFO - df_random created
+2023-07-27 16:00:55,038 - INFO - random values received: [15.1], [131.0]
+2023-07-27 16:00:55,038 - INFO - random and real data received
+2023-07-27 16:00:55,042 - INFO - Barpolar plot created
+2023-07-27 16:00:55,058 - INFO - figure returned
+2023-07-27 16:00:55,059 - INFO - update_polar_plots
+2023-07-27 16:00:55,065 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:55] "POST /_dash-update-component HTTP/1.1" 200 -
+2023-07-27 16:00:55,638 - INFO - message has sent
+2023-07-27 16:00:55,757 - INFO - get batch b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa6\x00\xa8\xb1\xc8', length: 19
+2023-07-27 16:00:55,758 - INFO - buffer: b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa6\x00\xa8\xb1\xc8', length: 19
+2023-07-27 16:00:55,758 - INFO - we in  b'\x01\x03\x0e\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa6\x00\xa8\xb1\xc8'
+2023-07-27 16:00:55,758 - INFO - buffer is ready  b'', length: 0
+2023-07-27 16:00:55,758 - INFO - data is unpacked
+2023-07-27 16:00:55,761 - INFO - string written to file
+2023-07-27 16:00:55,768 - INFO - df returned to Dash
+2023-07-27 16:00:55,768 - INFO - r, theta received: [0.0], [166]
+2023-07-27 16:00:55,769 - INFO - random and real data received
+2023-07-27 16:00:55,773 - INFO - Barpolar plot created
+2023-07-27 16:00:55,799 - INFO - figure returned
+2023-07-27 16:00:55,803 - INFO - df_random created
+2023-07-27 16:00:55,803 - INFO - random values received: [15.1], [64.0]
+2023-07-27 16:00:55,803 - INFO - random and real data received
+2023-07-27 16:00:55,809 - INFO - Barpolar plot created
+2023-07-27 16:00:55,833 - INFO - figure returned
+2023-07-27 16:00:55,839 - INFO - df_random created
+2023-07-27 16:00:55,840 - INFO - random values received: [3.8], [339.0]
+2023-07-27 16:00:55,840 - INFO - random and real data received
+2023-07-27 16:00:55,844 - INFO - Barpolar plot created
+2023-07-27 16:00:55,874 - INFO - figure returned
+2023-07-27 16:00:55,876 - INFO - df_random created
+2023-07-27 16:00:55,877 - INFO - random values received: [14.7], [339.0]
+2023-07-27 16:00:55,877 - INFO - random and real data received
+2023-07-27 16:00:55,881 - INFO - Barpolar plot created
+2023-07-27 16:00:55,905 - INFO - figure returned
+2023-07-27 16:00:55,907 - INFO - update_polar_plots
+2023-07-27 16:00:55,921 - INFO - 127.0.0.1 - - [27/Jul/2023 16:00:55] "POST /_dash-update-component HTTP/1.1" 200 -

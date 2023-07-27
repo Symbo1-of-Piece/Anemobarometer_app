@@ -1,0 +1,59 @@
+-------------------
+Program Description:
+-------------------
+
+"Sokol-A Anemobarometer" - A program designed to track and display wind speed and direction from an anemobarometer,
+manufactured by Escort Monitoring Systems, with the function of generating reports in MS Excel. 
+Logging is only possible when the application is launched with administrator privileges.
+
+
+
+------------------
+Supported Devices:
+------------------
+
+1. Sokol-A
+
+
+
+--------------------
+System Requirements:
+--------------------
+
+1. Windows 10, version 16299 (Fall Creators Update) or higher;
+2. Python 3.11 or higher;
+    2.1. To install the latest version of Python, go to this link (сlick the checkbox in the window "Add python.exe to Path" during installation): https://www.python.org/downloads/
+    2.2. Instructions for adding pip to the environment variables: https://setiwik.ru/kak-ustanovit-pip-dlya-upravleniya-paketami-python-v-windows/
+The program requires a constant Wi-Fi connection for running.
+
+
+
+--------------------
+Running the Program:
+--------------------
+
+1. Connect the Anemobarometer and the computer to the same Wi-Fi network;
+2. Open the "main" folder. Inside the folder, run the file named "main" with administrator privileges;
+3. During the first launch of the program, the necessary libraries will be loaded. This may take a few minutes;
+4. After libraries installation, the DASH window will open in the default browser, and display 4 graphs.
+
+
+
+------------------------
+Additional Explanations:
+------------------------
+
+1. Graphs
+    1.1 In an open browser window, the Dash page containing 4 graphs. The first one shows real data from the device.
+    1.2 2-4 graphs are obtained with the help of a number generator and only demonstrate the visual functionality of the program.
+    Later, graphs 2-4 can be replaced by displaying real data from devices of this model.
+
+2. Logging
+    2.1 At the same time with displaying the data graph in the "Wind Rose" form, the data is writing to a csv file
+    2.2 The file name is YYYY-MM-DD.csv(today date). The file is located in the logs folder inside the Sokol-A anemobarometer folder.
+    Only the first (real) graph are being recorded.
+
+3. Warning Window
+    4.1. The program contains functionality that allows to display a warning window in case the wind speed exceeds the selected limit value.
+    4.2. Currently, the warning window appears for 5 seconds when the wind speed is > 17.5 m/s.
+    4.3. The warning window also displays the wind speed that triggered its appearance.
