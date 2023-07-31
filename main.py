@@ -135,11 +135,23 @@ def create_random_data_for_plot():
     """
     Функция для генерации DataFrame со случайными значениями(имитация работы другого устройства)
     """
-    r_random = [round(random.uniform(0, 20),1)]  # Сила ветра
-    theta_random = [round(random.uniform(0, 360),0)]  # Угол ветра
-    df_random = pd.DataFrame({'speed': [r_random], 'direction': [theta_random]})
+    r_random = round(random.uniform(0, 20),1)  # Сила ветра
+    theta_random = round(random.uniform(0, 360),0)  # Угол ветра
+    df_random = pd.DataFrame({'speed': r_random, 'direction': theta_random})
     logging.info('df_random created')
     return df_random
+
+# Сначала убрал списки списков: round(random.uniform(0, 20),1) ты помещал в список при создании, потом еще раз в список при создании дф: 'speed': [r_random].
+# Это лишнее, можно подать напрямую
+# Потом начал смотреть следуюущю функцию и не понял, зачем генерацию рандомных данных ты разделил на два этапа. Предлогаю сделать так:
+
+"""
+def get_random_data():
+    r_random = round(random.uniform(0, 20),1)  # Сила ветра
+    theta_random = round(random.uniform(0, 360),0)  # Угол ветра
+    logging.info(f'random values received: {r_random}, {theta_random}')
+    return r_random, theta_random
+"""
 
 def get_random_data():
     """
@@ -158,20 +170,19 @@ def get_data_from_RW_class():
     try:
         df_WR = logger_WR.get_data()
         r_WR = [df_WR['WindSpeed'].values[0]]  # скорость ветра
-        theta_WR = [df_WR['WindDir_1min'].values[0]]  # угол направления ветра
+        theta_WR = [df_WR['WindDir_1min'].values[0]]  # угол направления ветра # Снова создаешь список, который не нужен
         logging.info(f'r, theta received: {r_WR}, {theta_WR}')
         return r_WR, theta_WR
     except Exception as e:
         logging.warning(f'r, theta did not received. {e}')
         print("Произошла ошибка", str(e))
 
-# устанавливаем цвет и прозрачность стрелки
-marker_style = dict(color='rgb(30, 136, 229)', line=dict(color='rgb(30, 136, 229)', width=1))
-
 def update_polar_plot(device_number):
     '''
     Функция построения и обновления графиков в полярной системе координат
     ''' 
+    # устанавливаем цвет и прозрачность стрелки
+    marker_style = dict(color='rgb(30, 136, 229)', line=dict(color='rgb(30, 136, 229)', width=1))
     # Условие для выбора: получить значения с устройства(номер устройства) или сгенерировать
     if device_number == 1: 
         r, theta = get_data_from_RW_class() 
@@ -197,11 +208,11 @@ def update_polar_plot(device_number):
         fig.update_layout(title= f'Устройство №: {device_number}', width=800, height=520, 
                         polar=dict(
                                     angularaxis=dict(direction="clockwise",
-                                                tickvals=np.arange(0, 360, 22.5),
-                                                ticktext=["С", "ССВ", "СВ", "ВСВ",
-                                                            "В", "ВЮВ", "ЮВ", "ЮЮВ",
-                                                            "Ю", "ЗЗЮ", "ЗЮ", "ЗЮЗ",
-                                                            "З", "ЗСЗ", "СЗ", "ССЗ"]),
+                                                        tickvals=np.arange(0, 360, 22.5),
+                                                        ticktext=["С", "ССВ", "СВ", "ВСВ",
+                                                                    "В", "ВЮВ", "ЮВ", "ЮЮВ",
+                                                                    "Ю", "ЗЗЮ", "ЗЮ", "ЗЮЗ",
+                                                                    "З", "ЗСЗ", "СЗ", "ССЗ"]),
                                     radialaxis=dict(range=[0, 6])),
                         legend=dict(font=dict(size=16),
                         x=0.31, y=-0.3,
