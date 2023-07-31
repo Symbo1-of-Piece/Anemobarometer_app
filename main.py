@@ -6,6 +6,7 @@ from Alarm_mode import Alarm_mode
 import socket
 
 # Установка библиотек при первом запуске программы, если это необходимо
+
 try:
     import numpy as np
 except:
@@ -51,63 +52,73 @@ except socket.error as se:
     logging.error(f"Socket error occurred: {se}")
     print('обрыв соединения')
 
-# Инициализируем класс Alarm
-alarm_1 = Alarm_mode()
-alarm_2 = Alarm_mode()
-alarm_3 = Alarm_mode()
-alarm_4 = Alarm_mode()
-logging.info('Alarm_Class inicialized')
+"""
 
-# Создаем объект приложения Dash
-app = dash.Dash(__name__)
-logging.info('app created')
+завернул все локальные переменные в функцию
 
-# Определение макета веб-приложения
-app.layout = html.Div([
-        html.H1("Флюгер_Анемометр "),
+"""
+def run_app():
+    # Инициализируем класс Alarm
+    alarm_1 = Alarm_mode()
+    alarm_2 = Alarm_mode()
+    alarm_3 = Alarm_mode()
+    alarm_4 = Alarm_mode()
+    logging.info('Alarm_Class inicialized')
 
-        # Выводим три графика с использованием компонента dcc.Graph для отображения графических данных
-        dcc.Graph(id="polar-plot1"),
-        dcc.Graph(id="polar-plot2"),
-        dcc.Graph(id="polar-plot3"),
-        dcc.Graph(id="polar-plot4"),
+    # Создаем объект приложения Dash
+    app = dash.Dash(__name__)
+    logging.info('app created')
 
-        dcc.Interval(
-            id="interval-component",
-            interval=1000, # Частота обновления 1 секунда
-            n_intervals=0),])
-logging.info('layout created')
+    # Определение макета веб-приложения
+    app.layout = html.Div([
+            html.H1("Флюгер_Анемометр "),
 
-# Определяем функцию-колбэк для обновления графиков
-@app.callback(
-    [Output("polar-plot1", "figure"),
-     Output("polar-plot2", "figure"),
-     Output("polar-plot3", "figure"),
-     Output("polar-plot4", "figure")],
-    [Input("interval-component", "n_intervals")],
-    prevent_initial_callbacks=True)
+            # Выводим три графика с использованием компонента dcc.Graph для отображения графических данных
+            dcc.Graph(id="polar-plot1"),
+            dcc.Graph(id="polar-plot2"),
+            dcc.Graph(id="polar-plot3"),
+            dcc.Graph(id="polar-plot4"),
 
-def update_polar_plots(n):
-    """
-    Функция получения значений для графиков, добавление окна предупреждения
-    """
-    fig1, r = update_polar_plot(device_number=1)
-    visible_1, warning_speed_1 = alarm_1.alarm_label(r)
-    add_warning_annotation(fig1, visible_1, warning_speed_1)
+            dcc.Interval(
+                id="interval-component",
+                interval=1000, # Частота обновления 1 секунда
+                n_intervals=0),])
+    logging.info('layout created')
 
-    fig2, r = update_polar_plot(device_number=2) 
-    visible_2, warning_speed_2 = alarm_2.alarm_label(r)
-    add_warning_annotation(fig2, visible_2, warning_speed_2)
-    
-    fig3, r = update_polar_plot(device_number=3)
-    visible_3, warning_speed_3 = alarm_3.alarm_label(r)
-    add_warning_annotation(fig3, visible_3, warning_speed_3)
-    
-    fig4, r = update_polar_plot(device_number=4)
-    visible_4, warning_speed_4 = alarm_4.alarm_label(r)
-    add_warning_annotation(fig4, visible_4, warning_speed_4)
-    logging.info('update_polar_plots')
-    return fig1, fig2, fig3, fig4
+    # Определяем функцию-колбэк для обновления графиков
+    @app.callback(
+        [Output("polar-plot1", "figure"),
+        Output("polar-plot2", "figure"),
+        Output("polar-plot3", "figure"),
+        Output("polar-plot4", "figure")],
+        [Input("interval-component", "n_intervals")],
+        prevent_initial_callbacks=True)
+    def update_polar_plots(n):
+        """
+        Функция получения значений для графиков, добавление окна предупреждения
+        """
+        fig1, r = update_polar_plot(device_number=1)
+        visible_1, warning_speed_1 = alarm_1.alarm_label(r)
+        add_warning_annotation(fig1, visible_1, warning_speed_1)
+
+        fig2, r = update_polar_plot(device_number=2) 
+        visible_2, warning_speed_2 = alarm_2.alarm_label(r)
+        add_warning_annotation(fig2, visible_2, warning_speed_2)
+        
+        fig3, r = update_polar_plot(device_number=3)
+        visible_3, warning_speed_3 = alarm_3.alarm_label(r)
+        add_warning_annotation(fig3, visible_3, warning_speed_3)
+        
+        fig4, r = update_polar_plot(device_number=4)
+        visible_4, warning_speed_4 = alarm_4.alarm_label(r)
+        add_warning_annotation(fig4, visible_4, warning_speed_4)
+        logging.info('update_polar_plots')
+        return fig1, fig2, fig3, fig4
+
+    url = 'http://localhost:8025'
+    webbrowser.open_new(url)
+    app.run_server(debug=False, port = 8025)
+    logging.info('server is launched')
 
 def add_warning_annotation(fig, visible_n, warning_speed):
     """
@@ -206,7 +217,4 @@ def update_polar_plot(device_number):
 
 # Запускаем сервер Dash
 if __name__ == '__main__':
-    url = 'http://localhost:8025'
-    webbrowser.open_new(url)
-    app.run_server(debug=False, port = 8025)
-    logging.info('server is launched')
+    run_app()
