@@ -1,6 +1,6 @@
-# Anemorumbometer
+# Anemobarometer interface
 ## I.А Описание проекта
-Разработка анеморумбометра Сокол-А, предназначенного для измерения и оценки направления и скорости ветра - завершена
+Разработка интерфейса для анеморумбометра Сокол-А, предназначенного для измерения и оценки направления и скорости ветра - завершена
 
 Разработка велась на русском и английском языке.
 
@@ -23,7 +23,7 @@ Alerting the user through a graphical interface about changes in weather conditi
 
 ## II.А Программа
 
-Sokol-A anemobarometer
+Sokol-A anemobarometer interface
 Программа предназначена для получения и распаковки данных с устройства Сокол-А с последующей визуализацией требуемых параметров
 
 Технологии и библиотеки
@@ -37,7 +37,7 @@ Sokol-A anemobarometer
 - dash: фреймворк Python для создания графического интерфейса
 
 Модули программы
-- Wind_Rose_logger.py - модуль для получения и расшифровки данных с устройства
+- Anemobarometer_logger.py - модуль для получения и расшифровки данных с устройства
 - Alarm_mode.py - модуль, актвирующий/дезактивирующий окно предупреждения о сильном ветре
 - main.py: главный модуль программы, который инициализирует и запускает графическое приложение.
 
@@ -46,7 +46,7 @@ Sokol-A anemobarometer
 1. Инструкция по запуску программы
 2. Пояснение к графическому интерфесу, записи логов, окну предупреждения
 
-Программа содержит файл отладки программы: Rose_Wind_logger_program.log, который содержит информацию о прошедших за время итераций событиях
+Программа содержит файл отладки программы: Anemobarometer_debug_logs.log, который содержит информацию о прошедших за время итераций событиях
 
 
 
@@ -66,7 +66,7 @@ Technologies and Libraries
 - dash: Framework Python for creating graphical interface.
 
 Program Modules
-- Wind_Rose_logger.py: a module for receiving and decoding data from the device.
+- Anemobarometer_logger.py: a module for receiving and decoding data from the device.
 - Alarm_mode.py: a module that activates/deactivates the warning window about strong winds.
 - main.py: the main program module that initializes and launches the graphical application.
 
@@ -75,14 +75,14 @@ Inside the file:
 1. Instructions for running the program.
 2. Explanation of the graphical interface, log recording, and warning window.
 
-The program contains the debugging file: Rose_Wind_logger_program.log, which contains information about events that occurred during iterations.
+The program contains the debugging file: Anemobarometer_debug_logs.log, which contains information about events that occurred during iterations.
 
 
 
 ## III.a Контактная информация
-- Telegram: https://t.me/wondermain
-- E-Mail: tim.yakushev.01@gmail.com
+- Telegram: https://t.me/wondermain, https://t.me/igor_mtrfnv
+- E-Mail: tim.yakushev.01@gmail.com, i.v.mitrofanov@ya.ru
 
 ## III.B Contact Information
-- Telegram: https://t.me/wondermain
-- E-Mail: tim.yakushev.01@gmail.com
+- Telegram: https://t.me/wondermain, https://t.me/igor_mtrfnv
+- E-Mail: tim.yakushev.01@gmail.com, i.v.mitrofanov@ya.ru

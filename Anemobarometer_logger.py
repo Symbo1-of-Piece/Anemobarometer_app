@@ -18,11 +18,13 @@ except:
     from datetime import timedelta
 
 
+
+
 # Логирование работы программы логирования ^_^
-logging.basicConfig(filename="Rose_Wind_logger_program.log", level=logging.DEBUG,
+logging.basicConfig(filename="Anemobarometer_debug_logs.log", level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s') 
 
-class Wind_Rose_logger:
+class AnemobarometerLogger:
     """
     Описание класса Wind_Rose_logger: Предназначен для логирования работы флюгера-анемометра (далее ФА) и записи логов в формате CSV
     Получает на входе байтовую строку, содержащую информацию о силе и направлении ветра, зарегистрированных датчиками устройства.
@@ -31,7 +33,6 @@ class Wind_Rose_logger:
     Атрибуты:
     - ip_adress (str) - адрес, по которому связаны устройство и компьютер
     - port (int) - порт связывающий компьютер и устройство
-
     Методы:
     - __init__(self, port, baudrate, timeout): конструктор класса.
     - save_to_csv(self, string, name_addition=''): метод, выполняющий сохранение строки данных в файл csv. 
@@ -75,7 +76,7 @@ class Wind_Rose_logger:
             SokolAnswer = received_data.hex()  
 
             Device_Type = SokolAnswer[6:10]
-            WindSpeed = (int(SokolAnswer[10:14],16)/10) # Зачем делать кортеж из одного значения?
+            WindSpeed = (int(SokolAnswer[10:14],16)/10)
             WindGust_10min = (int(SokolAnswer[14:18],16)/10)
             WindSpeed_10min = (int(SokolAnswer[18:22],16)/10)
             WindSpeed_1min = (int(SokolAnswer[22:26],16)/10)

@@ -2,7 +2,7 @@
 Program Description:
 -------------------
 
-"Sokol-A Anemobarometer" - A program designed to track and display wind speed and direction from an anemobarometer,
+"Anemobarometer interface" - A program designed to track and display wind speed and direction from an anemobarometer,
 manufactured by Escort Monitoring Systems, with the function of generating reports in MS Excel. 
 Logging is only possible when the application is launched with administrator privileges.
 
@@ -50,7 +50,7 @@ Additional Explanations:
 
 2. Logging
     2.1 At the same time with displaying the data graph in the "Wind Rose" form, the data is writing to a csv file
-    2.2 The file name is YYYY-MM-DD.csv(today date). The file is located in the logs folder inside the Sokol-A anemobarometer folder.
+    2.2 The file name is YYYY-MM-DD.csv(today date). The file is located in the logs folder inside the Anemobarometer interface folder.
     Only the first (real) graph are being recorded.
 
 3. Warning Window
