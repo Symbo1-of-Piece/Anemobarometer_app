@@ -3,4 +3,6 @@ Rose_Wind__logger_program.log
 
 /__pycache__/
 
+/logs/
+
 /.ipynb_checkpoints/
