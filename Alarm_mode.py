@@ -50,29 +50,3 @@ class AlarmMode:
 # TODO: предлагаю длительность появления аларма сделать настраиваемым параметром, а не хардкодом. т.е. добавить в инициализацию или функцию alarm_label.
 # Тоже самое касается порога скорости ветра для аларма - введи константу WIND_SPEED_THRESHOLD.
 # Названия имен классов принято делать верблюжим кейсом, перед и после класса пропускают 2 пустые строки
-
-# Разделяй обязанностей: vетод alarm_label обрабатывает и определение видимости окна предупреждения, и обновление self.alarm_off_time и self.warning_speed. 
-# Для лучшей организации кода, возможно, стоит разделить это в разные методы:
-
-"""
-def get_alarm_label(self, wind_speed_list):
-    datetime_now = datetime.datetime.now().replace(microsecond=0)
-
-    if self.alarm_off_time <= datetime_now:
-        if wind_speed_list[0] >= self.WIND_SPEED_THRESHOLD:
-            self.update_alarm(wind_speed_list[0])
-        else:
-            self.visible = False
-    else:
-        self.visible = True
-
-    return self.visible
-
-def update_alarm(self, wind_speed):
-    datetime_now = datetime.datetime.now().replace(microsecond=0)
-    turn_off_time = datetime_now + datetime.timedelta(seconds=self.APPERANCE_TIME)
-
-    self.visible = True
-    self.alarm_off_time = turn_off_time
-    self.warning_speed = wind_speed
-"""

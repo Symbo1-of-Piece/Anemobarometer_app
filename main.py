@@ -2,7 +2,7 @@ import random
 import os
 import logging
 from Wind_Rose_logger import Wind_Rose_logger
-from Alarm_mode import Alarm_mode
+from Alarm_mode import AlarmMode
 import socket
 
 # Установка библиотек при первом запуске программы, если это необходимо
@@ -59,10 +59,10 @@ except socket.error as se:
 """
 def run_app():
     # Инициализируем класс Alarm
-    alarm_1 = Alarm_mode()
-    alarm_2 = Alarm_mode()
-    alarm_3 = Alarm_mode()
-    alarm_4 = Alarm_mode()
+    alarm_1 = AlarmMode()
+    alarm_2 = AlarmMode()
+    alarm_3 = AlarmMode()
+    alarm_4 = AlarmMode()
     logging.info('Alarm_Class inicialized')
 
     # Создаем объект приложения Dash
