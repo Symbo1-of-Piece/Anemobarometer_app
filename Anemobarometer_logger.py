@@ -24,6 +24,12 @@ except:
 logging.basicConfig(filename="Anemobarometer_debug_logs.log", level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s') 
 
+# Создадим папку для логов
+logger_path = os.path.dirname(os.path.realpath(__file__)) + '/logs/'
+if not os.path.exists(logger_path):
+    os.makedirs(logger_path)
+
+
 class AnemobarometerLogger:
     """
     Описание класса Wind_Rose_logger: Предназначен для логирования работы флюгера-анемометра (далее ФА) и записи логов в формате CSV
@@ -175,7 +181,7 @@ class AnemobarometerLogger:
                     df = pd.DataFrame(data_dict, index=[0]) 
                 break   
             else:
-                logging.warning('buffer is bad: {buffer}')
+                logging.warning(f'buffer is bad: {buffer}')
                 buffer = b''    
         
         df = pd.DataFrame(data=data_dict, index=[0])
