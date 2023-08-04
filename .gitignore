@@ -1,5 +1,6 @@
 
 Rose_Wind__logger_program.log
+*.log
 
 /__pycache__/
 

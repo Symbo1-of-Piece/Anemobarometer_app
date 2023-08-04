@@ -24,11 +24,6 @@ except:
 logging.basicConfig(filename="Anemobarometer_debug_logs.log", level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s') 
 
-# Создадим папку для логов
-logger_path = os.path.dirname(os.path.realpath(__file__)) + '/logs/'
-if not os.path.exists(logger_path):
-    os.makedirs(logger_path)
-
 
 class AnemobarometerLogger:
     """
@@ -122,7 +117,10 @@ class AnemobarometerLogger:
         writepath = logger_path + date_for_name  + name_addition + '.csv'
         mode = 'a' if os.path.exists(writepath) else 'w'
 
-        with open(logger_path + name_addition + date_for_name + '.csv', mode) as file:
+        if not os.path.exists(logger_path):
+            os.makedirs(logger_path)
+
+        with open(writepath, mode) as file:
             if mode == 'w':
                 file.write('Datetime, WindSpeed, WindGust_10min, WindSpeed_10min, WindSpeed_1min, WindDir_1min, WindDir_10min  \n')
                 print('file created with name ' + name_addition + date_for_name + '.csv')
